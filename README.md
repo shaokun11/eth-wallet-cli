@@ -9,7 +9,7 @@ A simple command-line tool to query Ethereum balances for addresses and manage w
 You can install this CLI tool globally from the git repository:
 
 ```bash
-npm install -g git+https://github.com/your-username/eth-balance-cli.git
+npm install -g git+https://github.com/shaokun11/eth-wallet-cli.git
 ```
 
 Or using the local path if you have the project cloned:
