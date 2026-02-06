@@ -4,6 +4,24 @@ A simple command-line tool to query Ethereum balances for addresses and manage w
 
 ## Installation
 
+### From Git (Global Installation)
+
+You can install this CLI tool globally from the git repository:
+
+```bash
+npm install -g git+https://github.com/your-username/eth-balance-cli.git
+```
+
+Or using the local path if you have the project cloned:
+
+```bash
+npm install -g .
+```
+
+This will make the `ethcli` command available globally on your system.
+
+### Local Installation
+
 First, install the required dependencies:
 
 ```bash
@@ -105,3 +123,18 @@ npx ethcli create-wallet --password "strong-password" --output my_wallet.json
 ## Environment Variables
 
 - `ETHEREUM_RPC_URL`: Alternative to passing the RPC URL as a command-line argument. If provided, it will be used as the default RPC endpoint for balance queries.
+
+## Publishing
+
+To publish this package to npm registry:
+
+```bash
+npm login
+npm publish
+```
+
+After publishing, users can install globally with:
+
+```bash
+npm install -g eth-balance-cli
+```
