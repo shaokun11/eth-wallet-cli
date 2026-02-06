@@ -4,21 +4,37 @@ A simple command-line tool to query Ethereum balances for addresses and manage w
 
 ## Installation
 
-### From Git (Global Installation)
+### From Git Repository (Global Installation)
 
-You can install this CLI tool globally from the git repository:
+First, clone the repository:
 
 ```bash
-npm install -g git+https://github.com/shaokun11/eth-wallet-cli.git
+git clone https://github.com/shaokun11/eth-wallet-cli.git
+cd eth-wallet-cli
 ```
 
-Or using the local path if you have the project cloned:
+Then install dependencies and build the project:
+
+```bash
+npm install
+npm run build
+```
+
+Finally, install globally:
 
 ```bash
 npm install -g .
 ```
 
 This will make the `ethcli` command available globally on your system.
+
+### From Git (Direct Installation)
+
+Alternatively, you can install directly from the git repository:
+
+```bash
+npm install -g git+https://github.com/shaokun11/eth-wallet-cli.git
+```
 
 ### Local Installation
 
