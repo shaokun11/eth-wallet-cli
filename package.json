@@ -1,0 +1,35 @@
+{
+  "name": "eth-balance-cli",
+  "version": "1.0.0",
+  "description": "A CLI tool for querying Ethereum balances",
+  "main": "dist/index.js",
+  "bin": {
+    "ethcli": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "ts-node src/index.ts",
+    "start": "node dist/index.js",
+    "clean": "rimraf dist",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "ethereum",
+    "balance",
+    "cli",
+    "blockchain"
+  ],
+  "author": "Claude",
+  "license": "MIT",
+  "type": "commonjs",
+  "dependencies": {
+    "ethers": "^6.13.4",
+    "commander": "^12.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.7.5",
+    "typescript": "^5.6.2",
+    "ts-node": "^10.9.2",
+    "rimraf": "^6.0.1"
+  }
+}
