@@ -75,7 +75,7 @@ npx ethcli balances 0x742d35Cc6634C0532925a3b844Bc454e4438f44e 0xAb5801a7D398351
 ### Create a new Ethereum wallet
 
 ```bash
-# Create an unencrypted wallet (saves to a random wallet_*.json file in current directory)
+# Create an unencrypted wallet (saves to wallet/ folder with random filename)
 npx ethcli create-wallet
 
 # Create an unencrypted wallet with a specific output file
@@ -107,7 +107,7 @@ npm run dev balance 0x742d35Cc6634C0532925a3b844Bc454e4438f44e --human-readable
 - `-d, --decimals <number>` - Specify number of decimals for human readable format (default: 18)
 
 ### Wallet Command
-- `-o, --output <path>` - Output file path for the wallet (default: wallet_*.json in current directory)
+- `-o, --output <path>` - Output file path for the wallet (default: wallet/wallet_*.json)
 - `-p, --password <password>` - Password to encrypt the wallet (optional, wallet will be stored unencrypted if not provided)
 
 ## Examples

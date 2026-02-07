@@ -73,11 +73,17 @@ program
   .command('create-wallet')
   .alias('wallet')
   .description('Create a new Ethereum wallet')
-  .option('-o, --output <path>', 'Output file path for the wallet (default: wallet_*.json in current directory)')
+  .option('-o, --output <path>', 'Output file path for the wallet (default: wallet/wallet_*.json)')
   .option('-p, --password <password>', 'Password to encrypt the wallet (optional, wallet will be stored unencrypted if not provided)')
   .action(async (options) => {
     try {
       const ethService = new EthService();
+
+      // Ensure wallet folder exists
+      const walletFolder = path.join(process.cwd(), 'wallet');
+      if (!fs.existsSync(walletFolder)) {
+        fs.mkdirSync(walletFolder, { recursive: true });
+      }
 
       if (options.password) {
         // Create encrypted wallet
@@ -88,7 +94,7 @@ program
         if (!outputPath) {
           // Generate a random filename if none provided
           const randomSuffix = randomBytes(4).toString('hex');
-          outputPath = `wallet_${randomSuffix}.json`;
+          outputPath = path.join(walletFolder, `wallet_${randomSuffix}.json`);
         }
 
         fs.writeFileSync(outputPath, keystoreJson);
@@ -103,7 +109,7 @@ program
         if (!outputPath) {
           // Generate a random filename if none provided
           const randomSuffix = randomBytes(4).toString('hex');
-          outputPath = `wallet_${randomSuffix}.json`;
+          outputPath = path.join(walletFolder, `wallet_${randomSuffix}.json`);
         }
 
         const walletData = {

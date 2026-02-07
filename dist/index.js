@@ -37,6 +37,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const commander_1 = require("commander");
 const ethService_1 = require("./ethService");
 const fs = __importStar(require("fs"));
+const path = __importStar(require("path"));
 const crypto_1 = require("crypto");
 const program = new commander_1.Command();
 program
@@ -103,18 +104,22 @@ program
     .command('create-wallet')
     .alias('wallet')
     .description('Create a new Ethereum wallet')
-    .option('-o, --output <path>', 'Output file path for the wallet (default: wallet_*.json in current directory)')
+    .option('-o, --output <path>', 'Output file path for the wallet (default: wallet/wallet_*.json)')
     .option('-p, --password <password>', 'Password to encrypt the wallet (optional, wallet will be stored unencrypted if not provided)')
     .action(async (options) => {
     try {
         const ethService = new ethService_1.EthService();
+        const walletFolder = path.join(process.cwd(), 'wallet');
+        if (!fs.existsSync(walletFolder)) {
+            fs.mkdirSync(walletFolder, { recursive: true });
+        }
         if (options.password) {
             console.log('Creating encrypted wallet...');
             const keystoreJson = await ethService.encryptWallet(options.password);
             let outputPath = options.output;
             if (!outputPath) {
                 const randomSuffix = (0, crypto_1.randomBytes)(4).toString('hex');
-                outputPath = `wallet_${randomSuffix}.json`;
+                outputPath = path.join(walletFolder, `wallet_${randomSuffix}.json`);
             }
             fs.writeFileSync(outputPath, keystoreJson);
             console.log(`Encrypted wallet saved to: ${outputPath}`);
@@ -126,7 +131,7 @@ program
             let outputPath = options.output;
             if (!outputPath) {
                 const randomSuffix = (0, crypto_1.randomBytes)(4).toString('hex');
-                outputPath = `wallet_${randomSuffix}.json`;
+                outputPath = path.join(walletFolder, `wallet_${randomSuffix}.json`);
             }
             const walletData = {
                 address: walletDetails.address,
