@@ -1,5 +1,5 @@
 {
-  "name": "eth-balance-cli",
+  "name": "eth-wallet-cli",
   "version": "1.0.0",
   "description": "A CLI tool for querying Ethereum balances",
   "main": "dist/index.js",
